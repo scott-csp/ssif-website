@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somalia Solar Investment Fund</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4A843;
+            --gold-light: #E8C872;
+            --deep-blue: #0A1628;
+            --navy: #12243D;
+            --teal: #1A8C7B;
+            --teal-light: #22B8A0;
+            --sand: #F5F0E8;
+            --sand-light: #FAF7F2;
+            --white: #FFFFFF;
+            --text-dark: #1A1A2E;
+            --text-muted: #5A6478;
+            --orange-accent: #E8723A;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* ─── Navigation ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 0.8rem 5%;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .nav-logo .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gold), var(--orange-accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .nav-logo span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--deep-blue) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            transition: transform 0.3s, box-shadow 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 168, 67, 0.35);
+            color: var(--deep-blue) !important;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .mobile-toggle span {
+            width: 26px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* ─── Hero Section ─── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(10,22,40,0.82) 0%, rgba(18,36,61,0.65) 50%, rgba(26,140,123,0.4) 100%),
+                url('https://2021-2025.state.gov/wp-content/uploads/2019/04/Somalia-1-scaled.jpg') center/cover no-repeat;
+        }
+
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero-particles::before,
+        .hero-particles::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.08;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .hero-particles::before {
+            width: 600px;
+            height: 600px;
+            background: var(--gold);
+            top: -200px;
+            right: -100px;
+        }
+
+        .hero-particles::after {
+            width: 400px;
+            height: 400px;
+            background: var(--teal);
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 5%;
+            padding-top: 6rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 168, 67, 0.15);
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            color: var(--gold-light);
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--deep-blue);
+            padding: 1rem 2.25rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(212, 168, 67, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            color: var(--white);
+            padding: 1rem 2.25rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .hero-stat h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+
+        .hero-stat p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+
+        /* ─── Section Styling ─── */
+        section {
+            padding: 7rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--teal);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--teal);
+            border-radius: 2px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* ─── Impact Banner ─── */
+        .impact-banner {
+            position: relative;
+            padding: 5rem 5%;
+            background:
+                linear-gradient(135deg, rgba(10,22,40,0.88), rgba(26,140,123,0.75)),
+                url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1920&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+
+        .impact-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .impact-banner p {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .impact-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--gold-light);
+        }
+
+        .impact-item p {
+            font-size: 0.9rem;
+            opacity: 0.75;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0;
+        }
+
+        /* ─── How It Works ─── */
+        .how-it-works {
+            background: var(--sand-light);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .step-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--teal), var(--teal-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .step-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ─── Investment Details ─── */
+        .investment-details {
+            background: var(--deep-blue);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .investment-details .section-header h2 {
+            color: white;
+        }
+
+        .investment-details .section-header p {
+            color: rgba(255,255,255,0.65);
+        }
+
+        .investment-details .section-label {
+            color: var(--gold-light);
+        }
+
+        .investment-details .section-label::before,
+        .investment-details .section-label::after {
+            background: var(--gold-light);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .detail-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .detail-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(212,168,67,0.3);
+        }
+
+        .detail-card .icon {
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+            display: block;
+        }
+
+        .detail-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--gold-light);
+        }
+
+        .detail-card p {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ─── Projects ─── */
+        .projects {
+            background: var(--sand-light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.1);
+        }
+
+        .project-image {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.3));
+        }
+
+        .project-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(26,140,123,0.9);
+            color: white;
+            padding: 0.35rem 1rem;
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            z-index: 1;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-body h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .project-body p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid #eee;
+        }
+
+        .project-meta div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-meta .label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .project-meta .value {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        /* ─── Landscape Section ─── */
+        .landscape-break {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .landscape-break img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .landscape-break .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10,22,40,0.6) 0%, rgba(26,140,123,0.3) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .landscape-break .overlay blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: white;
+            font-weight: 500;
+            max-width: 700px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .landscape-break .overlay blockquote footer {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-style: normal;
+            color: var(--gold-light);
+            margin-top: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+        }
+
+        /* ─── Board of Advisors ─── */
+        .advisors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .advisor-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--white);
+            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+        }
+
+        .advisor-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+        }
+
+        .advisor-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--teal), var(--teal-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: white;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+        }
+
+        .advisor-avatar::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            opacity: 0.4;
+        }
+
+        .advisor-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+            color: var(--text-dark);
+        }
+
+        .advisor-card .role {
+            color: var(--teal);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .advisor-card p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* ─── Contact Form ─── */
+        .contact {
+            background: var(--sand-light);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-detail .icon-circle {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: linear-gradient(135deg, var(--teal), var(--teal-light));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .contact-detail span {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1.15rem;
+            border: 2px solid #E8ECF2;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: var(--sand-light);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--teal);
+            box-shadow: 0 0 0 4px rgba(26,140,123,0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--teal), var(--teal-light));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(26,140,123,0.3);
+        }
+
+        /* ─── Footer ─── */
+        footer {
+            background: var(--deep-blue);
+            color: rgba(255,255,255,0.7);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-brand .nav-logo {
+            margin-bottom: 1rem;
+            display: inline-flex;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col ul a {
+            color: rgba(255,255,255,0.55);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--gold-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-bottom a {
+            color: var(--gold-light);
+            text-decoration: none;
+        }
+
+        /* ─── Animations ─── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 968px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.25rem;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .landscape-break {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo">
+            <div class="logo-icon">&#9728;</div>
+            <span>SSIF</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#investment">Investment</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#advisors">Advisors</a></li>
+            <li><a href="#contact" class="nav-cta">Invest Now</a></li>
+        </ul>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-particles"></div>
+        <div class="hero-content fade-up">
+            <div class="hero-badge">&#9889; Now Accepting Investors</div>
+            <h1>Powering Somalia's Future with <span class="highlight">Solar Energy</span></h1>
+            <p>Invest in solar infrastructure across the Horn of Africa. Earn competitive returns while building sustainable livelihoods for communities in Somalia and Somaliland.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Start Investing &rarr;</a>
+                <a href="#how-it-works" class="btn-secondary">Learn More</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <h3>8%+</h3>
+                    <p>Target Annual Return</p>
+                </div>
+                <div class="hero-stat">
+                    <h3>$5M</h3>
+                    <p>Fund Target</p>
+                </div>
+                <div class="hero-stat">
+                    <h3>15+</h3>
+                    <p>Planned Projects</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Banner -->
+    <section class="impact-banner">
+        <h2>Renewable Energy. Real Returns. Lasting Impact.</h2>
+        <p>Somalia receives over 3,000 hours of sunlight annually, making it one of the most solar-rich regions on Earth &mdash; yet millions remain without reliable electricity.</p>
+        <div class="impact-grid">
+            <div class="impact-item">
+                <h3>3,000+</h3>
+                <p>Sunshine Hours / Year</p>
+            </div>
+            <div class="impact-item">
+                <h3>70%</h3>
+                <p>Population Off-Grid</p>
+            </div>
+            <div class="impact-item">
+                <h3>$2B+</h3>
+                <p>Energy Market Potential</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-header fade-up">
+            <div class="section-label">How It Works</div>
+            <h2>A Simple Path to Impact Investment</h2>
+            <p>We've streamlined the investment process so you can start making a difference with confidence.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card fade-up">
+                <div class="step-number">1</div>
+                <h3>Invest in the Fund</h3>
+                <p>Contribute capital to the Somalia Solar Investment Fund. Minimum investments start at an accessible level to welcome a broad range of investors.</p>
+            </div>
+            <div class="step-card fade-up">
+                <div class="step-number">2</div>
+                <h3>We Finance Solar Projects</h3>
+                <p>Your capital is deployed to finance vetted solar EPC, mini-grid, and energy storage projects across Somalia and Somaliland.</p>
+            </div>
+            <div class="step-card fade-up">
+                <div class="step-number">3</div>
+                <h3>ClearSky Power Delivers</h3>
+                <p>Our implementation partner, <a href="https://clearsky-power.com" target="_blank" style="color:var(--teal); text-decoration:underline;">ClearSky Power</a>, manages engineering, procurement, construction, and ongoing operations.</p>
+            </div>
+            <div class="step-card fade-up">
+                <div class="step-number">4</div>
+                <h3>Earn Returns &amp; Impact</h3>
+                <p>Projects generate revenue through power purchase agreements and energy sales. You receive returns while communities gain reliable, clean electricity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Details -->
+    <section class="investment-details" id="investment">
+        <div class="section-header fade-up">
+            <div class="section-label">Investment Details</div>
+            <h2>Structured for Performance &amp; Transparency</h2>
+            <p>Every aspect of the fund is designed to align investor interests with community outcomes.</p>
+        </div>
+        <div class="details-grid">
+            <div class="detail-card fade-up">
+                <span class="icon">&#128200;</span>
+                <h3>Target Returns</h3>
+                <p>The fund targets annual returns of 8&ndash;12%, generated through long-term power purchase agreements and energy service contracts with local utilities and institutions.</p>
+            </div>
+            <div class="detail-card fade-up">
+                <span class="icon">&#128737;</span>
+                <h3>Risk Mitigation</h3>
+                <p>Diversified across multiple project types (mini-grids, commercial solar, agricultural pumps) and geographies to reduce concentrated risk exposure.</p>
+            </div>
+            <div class="detail-card fade-up">
+                <span class="icon">&#128202;</span>
+                <h3>Quarterly Reporting</h3>
+                <p>Investors receive detailed quarterly reports covering financial performance, project milestones, energy output data, and community impact metrics.</p>
+            </div>
+            <div class="detail-card fade-up">
+                <span class="icon">&#127758;</span>
+                <h3>ESG Aligned</h3>
+                <p>Every dollar invested directly contributes to UN Sustainable Development Goals 7 (Affordable Energy), 8 (Decent Work), and 13 (Climate Action).</p>
+            </div>
+            <div class="detail-card fade-up">
+                <span class="icon">&#128274;</span>
+                <h3>Fund Structure</h3>
+                <p>Structured as a closed-end fund with a 5-year term. Capital is called in tranches aligned with project deployment schedules for optimal capital efficiency.</p>
+            </div>
+            <div class="detail-card fade-up">
+                <span class="icon">&#129309;</span>
+                <h3>Expert Partners</h3>
+                <p>Projects are implemented by ClearSky Power, an established solar EPC firm headquartered in Hargeisa with operations across the Horn of Africa since inception.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Landscape Break -->
+    <div class="landscape-break">
+        <img src="https://images.unsplash.com/photo-1611348524140-53c9a25263d6?w=1920&q=80" alt="Somali landscape at golden hour">
+        <div class="overlay">
+            <blockquote>
+                &ldquo;Energy is the golden thread that connects economic growth, social equity, and environmental sustainability.&rdquo;
+                <footer>&mdash; Ban Ki-moon, Former UN Secretary-General</footer>
+            </blockquote>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="section-header fade-up">
+            <div class="section-label">Example Projects</div>
+            <h2>Real Projects, Measurable Impact</h2>
+            <p>Based on ClearSky Power's proven track record of delivering solar infrastructure across the Horn of Africa.</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card fade-up">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80')">
+                    <span class="project-tag">Mini Grid</span>
+                </div>
+                <div class="project-body">
+                    <h3>Alley Badey Mini Grid</h3>
+                    <p>A community-scale solar mini-grid providing reliable electricity to the town of Alley Badey in Somaliland, replacing expensive diesel generation and enabling local businesses to thrive.</p>
+                    <div class="project-meta">
+                        <div>
+                            <span class="label">Location</span>
+                            <span class="value">Somaliland</span>
+                        </div>
+                        <div>
+                            <span class="label">Type</span>
+                            <span class="value">Solar Mini Grid</span>
+                        </div>
+                        <div>
+                            <span class="label">Status</span>
+                            <span class="value">Operational</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card fade-up">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&q=80')">
+                    <span class="project-tag">Hybrid System</span>
+                </div>
+                <div class="project-body">
+                    <h3>UNICEF Hargeisa Solar-Diesel Hybrid</h3>
+                    <p>A hybrid solar-diesel system designed for UNICEF's Hargeisa compound, dramatically reducing fuel costs and carbon emissions while ensuring uninterrupted power for critical humanitarian operations.</p>
+                    <div class="project-meta">
+                        <div>
+                            <span class="label">Location</span>
+                            <span class="value">Hargeisa</span>
+                        </div>
+                        <div>
+                            <span class="label">Type</span>
+                            <span class="value">Hybrid Solar</span>
+                        </div>
+                        <div>
+                            <span class="label">Status</span>
+                            <span class="value">Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card fade-up">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=800&q=80')">
+                    <span class="project-tag">Commercial</span>
+                </div>
+                <div class="project-body">
+                    <h3>Gasiin Bistro Garowe Hybrid System</h3>
+                    <p>A commercial-scale hybrid solar installation for Gasiin Bistro in Garowe, Somalia, demonstrating the viability of solar solutions for the growing hospitality and business sector.</p>
+                    <div class="project-meta">
+                        <div>
+                            <span class="label">Location</span>
+                            <span class="value">Garowe, Somalia</span>
+                        </div>
+                        <div>
+                            <span class="label">Type</span>
+                            <span class="value">Commercial Hybrid</span>
+                        </div>
+                        <div>
+                            <span class="label">Status</span>
+                            <span class="value">Operational</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card fade-up">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80')">
+                    <span class="project-tag">Agriculture</span>
+                </div>
+                <div class="project-body">
+                    <h3>Agricultural Solar Pump Systems</h3>
+                    <p>Solar-powered water pump installations across multiple farms, enabling year-round irrigation and transforming subsistence farming into productive, income-generating agriculture.</p>
+                    <div class="project-meta">
+                        <div>
+                            <span class="label">Location</span>
+                            <span class="value">Various, Somalia</span>
+                        </div>
+                        <div>
+                            <span class="label">Type</span>
+                            <span class="value">Solar Pumps</span>
+                        </div>
+                        <div>
+                            <span class="label">Status</span>
+                            <span class="value">Ongoing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Landscape Break 2 -->
+    <div class="landscape-break">
+        <img src="https://images.unsplash.com/photo-1590845947698-8924d7409b56?w=1920&q=80" alt="Solar panels in African landscape">
+        <div class="overlay">
+            <blockquote>
+                &ldquo;Solar energy is the last energy resource that isn't owned yet &mdash; nobody taxes the sun yet.&rdquo;
+                <footer>&mdash; Bonnie Raitt</footer>
+            </blockquote>
+        </div>
+    </div>
+
+    <!-- Board of Advisors -->
+    <section id="advisors">
+        <div class="section-header fade-up">
+            <div class="section-label">Leadership</div>
+            <h2>Board of Advisors</h2>
+            <p>Our advisory board brings together expertise in renewable energy, African markets, finance, and development.</p>
+        </div>
+        <div class="advisors-grid">
+            <div class="advisor-card fade-up">
+                <div class="advisor-avatar">AH</div>
+                <h3>Ahmed Hassan</h3>
+                <div class="role">Chair &mdash; Energy Sector</div>
+                <p>Former Director of Energy at the Somaliland Ministry of Energy with 20+ years of experience in power sector development across East Africa.</p>
+            </div>
+            <div class="advisor-card fade-up">
+                <div class="advisor-avatar">SM</div>
+                <h3>Sarah Mitchell</h3>
+                <div class="role">Finance &amp; Investment</div>
+                <p>Senior investment professional with expertise in impact investing and structured finance across frontier markets in Sub-Saharan Africa.</p>
+            </div>
+            <div class="advisor-card fade-up">
+                <div class="advisor-avatar">FO</div>
+                <h3>Farah Omar</h3>
+                <div class="role">Operations &amp; Technical</div>
+                <p>Renewable energy engineer and co-founder of ClearSky Power. Extensive experience in solar EPC project delivery across the Horn of Africa.</p>
+            </div>
+            <div class="advisor-card fade-up">
+                <div class="advisor-avatar">DK</div>
+                <h3>Diana Keane</h3>
+                <div class="role">ESG &amp; Development</div>
+                <p>International development specialist focused on climate finance, ESG frameworks, and sustainable development policy in emerging markets.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header fade-up">
+            <div class="section-label">Get Started</div>
+            <h2>Invest in Somalia's Solar Future</h2>
+            <p>Reach out to learn more about investment opportunities and how you can be part of this transformative fund.</p>
+        </div>
+        <div class="contact-wrapper">
+            <div class="contact-info fade-up">
+                <h3>Let's Talk</h3>
+                <p>Whether you're an individual investor, institutional allocator, or development finance organization, we'd like to hear from you.</p>
+                <div class="contact-detail">
+                    <div class="icon-circle">&#9993;</div>
+                    <span>invest@somaliasolarfund.com</span>
+                </div>
+                <div class="contact-detail">
+                    <div class="icon-circle">&#9742;</div>
+                    <span>+252 637 652 037</span>
+                </div>
+                <div class="contact-detail">
+                    <div class="icon-circle">&#9873;</div>
+                    <span>Hargeisa, Somaliland</span>
+                </div>
+                <div style="margin-top: 2.5rem; padding: 1.5rem; background: rgba(26,140,123,0.06); border-radius: 16px; border: 1px solid rgba(26,140,123,0.12);">
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;"><strong style="color: var(--teal);">Implementation Partner</strong><br>Projects are delivered by <a href="https://clearsky-power.com" target="_blank" style="color: var(--teal); font-weight: 600;">ClearSky Power</a>, a leading solar EPC firm headquartered in Hargeisa with offices in Garowe, Somalia.</p>
+                </div>
+            </div>
+            <form class="contact-form fade-up" onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="investorType">Investor Type</label>
+                    <select id="investorType" name="investorType" required>
+                        <option value="" disabled selected>Select investor type</option>
+                        <option value="individual">Individual Investor</option>
+                        <option value="institutional">Institutional Investor</option>
+                        <option value="family-office">Family Office</option>
+                        <option value="dfi">Development Finance Institution</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your interest in the fund..." rows="4"></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Enquiry &rarr;</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="nav-logo">
+                    <div class="logo-icon">&#9728;</div>
+                    <span>SSIF</span>
+                </a>
+                <p>The Somalia Solar Investment Fund channels private capital into solar infrastructure that powers communities, builds livelihoods, and generates sustainable returns.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Fund</h4>
+                <ul>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#investment">Investment Details</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#advisors">Advisors</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Partner</h4>
+                <ul>
+                    <li><a href="https://clearsky-power.com" target="_blank">ClearSky Power</a></li>
+                    <li><a href="https://clearsky-power.com" target="_blank">Services</a></li>
+                    <li><a href="https://clearsky-power.com" target="_blank">Track Record</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Risk Disclosure</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Somalia Solar Investment Fund. All rights reserved. &nbsp;|&nbsp; Projects implemented by <a href="https://clearsky-power.com" target="_blank">ClearSky Power</a></p>
+            <p style="margin-top: 0.75rem; font-size: 0.75rem; opacity: 0.6;">This website is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+
+        // Scroll reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Form handling
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('.form-submit');
+            btn.textContent = 'Thank you! We\'ll be in touch.';
+            btn.style.background = 'linear-gradient(135deg, #1A8C7B, #22B8A0)';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.textContent = 'Send Enquiry →';
+                btn.disabled = false;
+                e.target.reset();
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
